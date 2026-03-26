@@ -28,6 +28,7 @@ server = socket.socket(socket.AF_INET, socket.SOCK_STREAM) server.bind(("localho
 print("ARP Server is running...")
 
 while True: client, addr = server.accept() print("Connected with", addr)
+
 ip = client.recv(1024).decode()
 print("Requested IP:", ip)
 
@@ -35,6 +36,7 @@ mac = arp_table.get(ip, "MAC Address not found")
 client.send(mac.encode())
 
 client.close()
+
 <img width="1854" height="255" alt="image" src="https://github.com/user-attachments/assets/5e7bdb33-930f-479a-9ab6-393c344f8a0b" />
 
 ##Client (ARP Client)
@@ -68,6 +70,7 @@ server = socket.socket(socket.AF_INET, socket.SOCK_STREAM) server.bind(("localho
 print("RARP Server is running...")
 
 while True: client, addr = server.accept() print("Connected with", addr)
+
 mac = client.recv(1024).decode()
 print("Requested MAC:", mac)
 
@@ -75,6 +78,7 @@ ip = rarp_table.get(mac, "IP Address not found")
 client.send(ip.encode())
 
 client.close()
+
 <img width="1610" height="321" alt="image" src="https://github.com/user-attachments/assets/66c03b23-406f-4a79-b11d-f50501c20d81" />
 ##Client (RARP Client)
 
