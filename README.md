@@ -28,7 +28,6 @@ server = socket.socket(socket.AF_INET, socket.SOCK_STREAM) server.bind(("localho
 print("ARP Server is running...")
 
 while True: client, addr = server.accept() print("Connected with", addr)
-
 ip = client.recv(1024).decode()
 print("Requested IP:", ip)
 
@@ -69,7 +68,6 @@ server = socket.socket(socket.AF_INET, socket.SOCK_STREAM) server.bind(("localho
 print("RARP Server is running...")
 
 while True: client, addr = server.accept() print("Connected with", addr)
-
 mac = client.recv(1024).decode()
 print("Requested MAC:", mac)
 
